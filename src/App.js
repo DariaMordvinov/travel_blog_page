@@ -1,24 +1,23 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+import data from './data.js';
+import Navbar from './components/Navbar';
+import Card from './components/Card';
 
 function App() {
+  // Returns 2 fragments: navbar and "cards" div. 
+  // In 'cards' div renders <Card /> component for each element in the "data" array
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <React.Fragment>
+      <Navbar />
+      <div className="cards">
+        {data.map(card =>
+          <Card
+            key={card.title}
+            {...card}
+          />)}
+      </div>
+    </React.Fragment>
   );
 }
 
